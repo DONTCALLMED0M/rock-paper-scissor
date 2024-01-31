@@ -9,25 +9,82 @@
     
     <script>
 
-// create a function for computer's choice
-// create a general function for the game that you can call inside the console
-// Create a variable for input prompt
-// create if statement for Scenario 'user inputs "Rock"'
-// create if statement for Scenario 'user inputs "Paper"'
-// create if statement for Scenario 'user inputs "Scissor"'
-// create if statement for Scenario 'user inputs different string value than "Rock, "Paper" or "Scissor" OR a number'
-
-
     // create a function for computer's choice
         function getComputerChoice() {
-            const choices = ["Rock", "Paper", "Scissor"];
-            const random = Math.floor(Math.random() * choices.length);
+                const choices = ["Rock", "Paper", "Scissors"];
+                const random = Math.floor(Math.random() * choices.length);
             
-            return choices[random];
+                return choices[random];
         }
 
+        function playGame() {
+        // scoreUser and scoreComputer are not in the for loop, because if it would be in it, the score would reset after each round.
+            let scoreUser = 0;
+            let scoreComputer = 0;
+        
+        // loop the function
+        for (let i= 0; i < 5; i++) {
+
+            let playerSelection = prompt("Rock, Paper, Scissors?")
+            playerSelection = playerSelection.toLowerCase();
+
+            let computerSelection = getComputerChoice();
+            computerSelection = computerSelection.toLowerCase();
+           
+            // display the selections of the user and the computer in the functions
+            console.log(playerSelection, computerSelection);
+
+            //CONDITIONS 
+            if (playerSelection === "rock" && computerSelection === "paper") {
+                scoreComputer++
+                console.log("YOU LOSE. PAPER beats ROCK");
+                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
+
+            }
+            else if (playerSelection === "rock" && computerSelection === "scissors") {
+                scoreUser++
+                console.log("YOU WIN. ROCK beats SCISSORS.");
+                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
+ 
+            }
+            else if (playerSelection === "paper" && computerSelection === "rock") {
+                scoreUser++
+                console.log("YOU WIN. PAPER beats ROCK.");
+                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
+
+            }
+            else if (playerSelection === "paper" && computerSelection === "scissors") {
+                scoreComputer++
+                console.log("YOU LOSE. SCISSORS beats PAPER.");
+                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
+            }
+            else if (playerSelection === "scissors" && computerSelection === "rock") {
+                scoreComputer++
+                console.log("YOU LOSE. ROCK beats SCISSORS.");
+                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
+            }
+            else if (playerSelection === "scissors" && computerSelection === "paper") {
+                scoreUser++
+                console.log("YOU WIN. SCISSORS beats PAPER.");
+                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
+               
+            }
+            else if (playerSelection === computerSelection) {
+                console.log("TIE.");
+                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
+              
+            }
+            else if (playerSelection !== "rock", playerSelection !== "paper", playerSelection !== "scissors") {
+                console.log("INVALID ENTRY.");
+            }
+
+        }
+            // return the final result.
+            return "Final Result: YOU: " + scoreUser + " COMPUTER: " + scoreComputer
+        
+            }
 
 
-    </script>
-</body>
-</html>
+        </script>
+        </body>
+        </html>
