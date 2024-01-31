@@ -11,18 +11,62 @@
 
     // create a function for computer's choice
         function getComputerChoice() {
-                const choices = ["Rock", "Paper", "Scissors"];
-                const random = Math.floor(Math.random() * choices.length);
+                const choices = ["Rock", "Paper", "Scissors"];      // Array
+                const random = Math.floor(Math.random() * choices.length);      //gets random value of the 'choices' array
             
-                return choices[random];
+                return choices[random];     // returns random choice
+        }
+
+        function playRound() {
+
+            let playerSelection = prompt("Rock, Paper, Scissors?")
+            playerSelection = playerSelection.toLowerCase();
+
+            let computerSelection = getComputerChoice();
+            computerSelection = computerSelection.toLowerCase();
+           
+            // display the selections of the user and the computer in the functions
+            console.log(playerSelection, computerSelection);
+
+             //CONDITIONS 
+             if (playerSelection === "rock" && computerSelection === "paper") {
+                return "YOU LOSE. PAPER beats ROCK";
+
+            }
+            else if (playerSelection === "rock" && computerSelection === "scissors") {
+                return "YOU WIN. ROCK beats SCISSORS."; 
+            }
+            else if (playerSelection === "paper" && computerSelection === "rock") {
+                return ("YOU WIN. PAPER beats ROCK.");
+
+            }
+            else if (playerSelection === "paper" && computerSelection === "scissors") {
+                return "YOU LOSE. SCISSORS beats PAPER.";
+            }
+            else if (playerSelection === "scissors" && computerSelection === "rock") {
+                return "YOU LOSE. ROCK beats SCISSORS.";
+            }
+            else if (playerSelection === "scissors" && computerSelection === "paper") {
+                return "YOU WIN. SCISSORS beats PAPER.";
+               
+            }
+            else if (playerSelection === computerSelection) {
+                return "TIE.";
+              
+            }
+            else if (playerSelection !== "rock", playerSelection !== "paper", playerSelection !== "scissors") {
+                return "INVALID ENTRY.";
+            }
+
         }
 
         function playGame() {
-        // scoreUser and scoreComputer are not in the for loop, because if it would be in it, the score would reset after each round.
+
+        // scoreUser and scoreComputer are not in the for loop, because if they would be in it, the score would reset after each round.
             let scoreUser = 0;
             let scoreComputer = 0;
         
-        // loop the function
+        // loop the function 5x with for loop
         for (let i= 0; i < 5; i++) {
 
             let playerSelection = prompt("Rock, Paper, Scissors?")
@@ -84,7 +128,7 @@
         
             }
 
-
+            
         </script>
         </body>
         </html>
