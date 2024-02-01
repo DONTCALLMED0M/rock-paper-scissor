@@ -14,8 +14,10 @@
                 const choices = ["Rock", "Paper", "Scissors"];      // Array
                 const random = Math.floor(Math.random() * choices.length);      //gets random value of the 'choices' array
             
-                return choices[random];     // returns random choice
+                return choices[random];     // returns random choices value that can be used further 
         }
+
+        
 
         function playRound() {
 
@@ -28,40 +30,28 @@
             // display the selections of the user and the computer in the functions
             console.log(playerSelection, computerSelection);
 
-             //CONDITIONS 
-             if (playerSelection === "rock" && computerSelection === "paper") {
-                return "YOU LOSE. PAPER beats ROCK";
+             //CONDITIONS (Lose, Win, Tie, Invalid)
+             if (playerSelection === "rock" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "rock") {
+                return "YOU LOSE. " + computerSelection.toUpperCase() + " beats " + playerSelection.toUpperCase() + ".";
 
             }
-            else if (playerSelection === "rock" && computerSelection === "scissors") {
-                return "YOU WIN. ROCK beats SCISSORS."; 
-            }
-            else if (playerSelection === "paper" && computerSelection === "rock") {
-                return ("YOU WIN. PAPER beats ROCK.");
-
-            }
-            else if (playerSelection === "paper" && computerSelection === "scissors") {
-                return "YOU LOSE. SCISSORS beats PAPER.";
-            }
-            else if (playerSelection === "scissors" && computerSelection === "rock") {
-                return "YOU LOSE. ROCK beats SCISSORS.";
-            }
-            else if (playerSelection === "scissors" && computerSelection === "paper") {
-                return "YOU WIN. SCISSORS beats PAPER.";
-               
+            else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper") {
+                return "YOU WIN. " + playerSelection.toUpperCase() + " beats " + computerSelection.toUpperCase() + "."; 
             }
             else if (playerSelection === computerSelection) {
                 return "TIE.";
-              
             }
-            else if (playerSelection !== "rock", playerSelection !== "paper", playerSelection !== "scissors") {
+            else {
                 return "INVALID ENTRY.";
             }
 
         }
 
-        function playGame() {
 
+
+        function playGame() {
+        
+        // create variables for the user and the computer score.
         // scoreUser and scoreComputer are not in the for loop, because if they would be in it, the score would reset after each round.
             let scoreUser = 0;
             let scoreComputer = 0;
@@ -78,56 +68,40 @@
             // display the selections of the user and the computer in the functions
             console.log(playerSelection, computerSelection);
 
-            //CONDITIONS 
-            if (playerSelection === "rock" && computerSelection === "paper") {
+            //CONDITIONS (Lose, Win, Tie, Invalid)
+            if (playerSelection === "rock" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "rock") {
                 scoreComputer++
-                console.log("YOU LOSE. PAPER beats ROCK");
+                console.log("YOU LOSE. " + computerSelection.toUpperCase() + " beats " + playerSelection.toUpperCase() + ".");
                 console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
 
             }
-            else if (playerSelection === "rock" && computerSelection === "scissors") {
+            else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper") {
                 scoreUser++
-                console.log("YOU WIN. ROCK beats SCISSORS.");
-                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
- 
-            }
-            else if (playerSelection === "paper" && computerSelection === "rock") {
-                scoreUser++
-                console.log("YOU WIN. PAPER beats ROCK.");
-                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
-
-            }
-            else if (playerSelection === "paper" && computerSelection === "scissors") {
-                scoreComputer++
-                console.log("YOU LOSE. SCISSORS beats PAPER.");
-                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
-            }
-            else if (playerSelection === "scissors" && computerSelection === "rock") {
-                scoreComputer++
-                console.log("YOU LOSE. ROCK beats SCISSORS.");
-                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
-            }
-            else if (playerSelection === "scissors" && computerSelection === "paper") {
-                scoreUser++
-                console.log("YOU WIN. SCISSORS beats PAPER.");
-                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
-               
+                console.log("YOU WIN. " + playerSelection.toUpperCase() + " beats " + computerSelection.toUpperCase() + ".");
+                console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);            
             }
             else if (playerSelection === computerSelection) {
                 console.log("TIE.");
                 console.log( "You: " + scoreUser + "  Computer: " + scoreComputer);
               
             }
-            else if (playerSelection !== "rock", playerSelection !== "paper", playerSelection !== "scissors") {
-                console.log("INVALID ENTRY.");
+            else {
+                console.log("INVALID ENTRY. Attempt doesn't count.");
+                // decrement i to get an extra attempt
+                i--;
             }
 
         }
             // return the final result.
-            return "Final Result: YOU: " + scoreUser + " COMPUTER: " + scoreComputer
+            if (scoreUser === scoreComputer) {
+                return "It's a Tie!"
+            } else if (scoreUser > scoreComputer) {
+                return "You win " + scoreUser + ":" + scoreComputer + "!"
+            } else {
+                return "You lose " + scoreUser + ":" + scoreComputer + "."
+            }
         
             }
-
             
         </script>
         </body>
